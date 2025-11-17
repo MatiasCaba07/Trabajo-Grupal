@@ -1,43 +1,40 @@
-# Contrato: init(vals), step() -> {"a": int, "b": int, "swap": bool, "done": bool}
-
 elementos = []
 norte = 0
 i = 0
 j = 0
 
-def inicialización(vals):
+def init(vals):
     global elementos, norte, i, j
     elementos = list(vals)
     norte = len(elementos)
     i = 0
     j = 0
 
-def paso():
+def step():
     global elementos, norte, i, j
 
-    # Si ya terminamos
+    # Si ya terminamos todas las pasadas
     if i >= norte - 1:
         return {"done": True}
 
-    # Si j llegó al final de la pasada, avanzamos i
-    if j >= norte - 1 - i:
+    # Si j llegó al final de la pasada, avanzar i
+    if j >= norte - i - 1:
         i += 1
         j = 0
-
         if i >= norte - 1:
             return {"done": True}
 
-    # Índices a comparar
+    # Indices
     a = j
     b = j + 1
     swap = False
 
-    # Comparación + swap si corresponde
+    # Swap si corresponde
     if elementos[a] > elementos[b]:
         elementos[a], elementos[b] = elementos[b], elementos[a]
         swap = True
 
-    # Avanzar para el próximo paso
+    # Avanzar j
     j += 1
 
     return {
