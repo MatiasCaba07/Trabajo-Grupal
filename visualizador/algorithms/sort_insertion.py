@@ -26,7 +26,10 @@ def step():
         j=j-1
         return {"a": j, "b": j+1, "swap": True, "done": False}
     
-    return {"a": j, "b": j+1, "swap": False, "done": True}
+    i=i+1
+    j=None
+    return {"a": j-1, "b": None, "swap": False, "done": False}
+    
 
     # TODO:
     # - Si i >= n: devolver {"done": True}.
