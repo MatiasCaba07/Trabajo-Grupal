@@ -23,6 +23,6 @@ def step():
     #   Al terminar el barrido, pasar a fase "swap".
     # - Fase "swap": si min_idx != i, hacer ese único swap y devolverlo.
     #   Luego avanzar i, reiniciar j=i+1 y min_idx=i, volver a "buscar".
-    #
+    #   messiiiii
     # Cuando i llegue al final, devolvé {"done": True}.
     return {"done": True}
