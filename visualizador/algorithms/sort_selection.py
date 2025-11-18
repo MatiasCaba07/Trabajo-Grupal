@@ -18,30 +18,28 @@ def init(vals):
     
 def step():
     global items, n, i, j, min_idx, fase
-
     if i >= n - 1:
         a = -1
         b = -1
         swap = False
         terminado = True
         return (a, b, swap, terminado)
-
     if fase == "buscar":
+        if j is None:
+            min_idx = i
+            j = i + 1
         a = min_idx
         b = j
         swap = False
         terminado = False
-
         if j < n:
             if items[j] < items[min_idx]:
                 min_idx = j
-
             j += 1
-    
-            if j < n:
-                return (a, b, swap, terminado)
+            if j == n:
+                fase = "swap"
+            return (a, b, swap, terminado)
         fase = "swap"
-
     if fase == "swap":
         swap = False
         if min_idx != i:
@@ -51,11 +49,9 @@ def step():
         b = min_idx
         terminado = False
         i += 1
+        if i >= n - 1:
+            return (a, b, swap, True)
         j = i + 1
         min_idx = i
         fase = "buscar"
-
-        if i >= n - 1:
-            terminado = True
-
         return (a, b, swap, terminado)
