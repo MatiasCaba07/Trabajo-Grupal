@@ -37,8 +37,9 @@ def step():
                 min_idx = j
 
             j += 1
-            return (a, b, swap, terminado)
-
+    
+            if j < n:
+                return (a, b, swap, terminado)
         fase = "swap"
 
     if fase == "swap":
